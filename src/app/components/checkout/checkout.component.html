@@ -1,0 +1,66 @@
+<!-- <p>checkout works!</p> -->
+<form [formGroup]="form" align="center">
+  <div align="center"  style="border: 1px solid Black;align-content: center;width: 50%; margin-left: 300px;">
+<h1>Checkout</h1>
+<label>Total Value in Cart: $</label>
+{{cartValue}}
+<br>
+    <div>
+        <label for="firstName" >First Name: </label><br>
+        <input type="text" formControlName="firstName" id="firstName"><br>
+</div>
+<div>
+        <label for="lastName" >Last Name:</label><br>
+        <input type="text" formControlName="lastName" id="lastName"><br>
+    </div>
+    <div>
+        <label for="address" >Address:</label><br>
+        <input type="text" formControlName="address" id="address"><br>
+    </div>
+    <div>
+        <label for="city" >City: </label><br>
+        <input type="text" formControlName="city" id="city"><br>
+    </div>
+    <div>
+        <label for="postalCode" >Postal Code: </label><br>
+        <input type="text" formControlName="postalCode" id="postalCode"><br>
+    </div>
+    <div>
+        <label for="country" >Country: </label><br>
+        <select formControlName="country" id="country">
+            <option value="Canada">Canada</option>
+            <option value="US">US</option>
+        </select>
+    </div>
+            <br>
+<div>
+            <label for="cardType" >Card Type</label><br>
+        <select formControlName="cardType" id="cardType">
+            <option value="VISA">VISA</option>
+            <option value="Mastercard">Mastercard</option>
+        </select>
+    </div>
+            <br>
+            <div>
+            <label for="creditCardNo" >Credit Card Number</label><br>
+        <input type="text" formControlName="creditCardNo" maxlength="16" id="creditCardNo"><br>
+    </div>
+    <div class="error" *ngIf="form.get('expiry')?.dirty">
+       <p *ngIf="form.get('expiry')?.errors?.['expiryDateNotValid']"> Expiry Date should be mm/yyyy<p>
+    </div><br>
+    <div>
+        <label for="expiry" >Expiry</label><br>
+        <input formControlName="expiry" type="text" id="expiry" name="expiry"><br>
+    </div>
+    <div>
+        <label for="cvc" >CVC</label><br>
+        <input type="text" formControlName="cvc" maxlength="4" id="cvc"><br>
+    </div>
+    <div>
+        <label for="nameoncard" >Name on card</label><br>
+        <input type="text" formControlName="nameoncard" id="nameoncard"><br>
+    </div>
+        <button [disabled]="!form.valid" (click)="Submit()">Submit</button>
+  </div>
+</form>
+
